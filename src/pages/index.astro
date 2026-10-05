@@ -73,6 +73,13 @@ const parsedReadme = readme ? marked.parse(readme) : null;
 								{repository.description && (
 									<p class="repos-desc">{repository.description}</p>
 								)}
+								{repository.topics.length > 0 && (
+									<ul class="repos-topics">
+										{repository.topics.slice(0, 3).map((topic) => (
+											<li>{topic}</li>
+										))}
+									</ul>
+								)}
 								<div class="repos-meta">
 									{repository.language && (
 										<span class="repos-lang">

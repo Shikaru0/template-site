@@ -179,6 +179,24 @@ h2 {
 	line-clamp: 2;
 }
 
+.repos-topics {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.4rem;
+	margin: 0.75rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.repos-topics > li {
+	padding: 0.2rem 0.5rem;
+	border-radius: 0.4rem;
+	background: color-mix(in srgb, var(--accent) 14%, transparent);
+	color: var(--accent);
+	font-size: 0.72rem;
+	line-height: 1.4;
+}
+
 .repos-meta {
 	display: flex;
 	flex-wrap: wrap;
