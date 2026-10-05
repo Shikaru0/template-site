@@ -3,7 +3,7 @@ Personal GitHub Pages site template built with Astro + TypeScript. Your reposito
 
 Making it yours: clone the repo, edit `src/config.ts`, push. That's the whole setup.
 
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 

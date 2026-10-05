@@ -28,7 +28,7 @@ const languageColors: Record<string, string> = {
 };
 
 function languageColor(language: string | null): string {
-	return (language && languageColors[language]) || "#8b949e";
+	return (language && languageColors[language]) || "#9198a1";
 }
 
 const repositories = await getGitHubRepositories();
@@ -49,39 +49,46 @@ const parsedReadme = readme ? marked.parse(readme) : null;
 		<title>{site.username}</title>
 	</head>
 	<body>
-		<h1>{site.username}</h1>
-		<div>
-			{parsedReadme ? (
-				<div class="prose" set:html={parsedReadme} />
-			) : (
-				<p>No README found for the user.</p>
-			)}
+		<main class="page">
+			<h1>{site.username}</h1>
+			<div>
+				{parsedReadme ? (
+					<div class="prose" set:html={parsedReadme} />
+				) : (
+					<p>No README found for the user.</p>
+				)}
 
-			<h2>GitHub Repositories</h2>
+				<h2>GitHub Repositories</h2>
 
-			<ul class="repos">
-				{repositories.map((repository) => (
-					<li>
-						<a href={repository.html_url} target="_blank" rel="noopener noreferrer">
-							<div class="repos-head">
-								<span class="repos-name">{repository.name}</span>
-								{repository.stargazers_count > 0 && (
-									<span class="repos-stars">★ {repository.stargazers_count}</span>
+				<ul class="repos">
+					{repositories.map((repository) => (
+						<li>
+							<a href={repository.html_url} target="_blank" rel="noopener noreferrer">
+								<div class="repos-head">
+									<span class="repos-name">{repository.name}</span>
+									<span class="repos-arrow" aria-hidden="true">
+										↗
+									</span>
+								</div>
+								{repository.description && (
+									<p class="repos-desc">{repository.description}</p>
 								)}
-							</div>
-							{repository.description && (
-								<p class="repos-desc">{repository.description}</p>
-							)}
-							{repository.language && (
-								<span class="repos-lang">
-									<span class="repos-dot" style={`background:${languageColor(repository.language)}`} />
-									{repository.language}
-								</span>
-							)}
-						</a>
-					</li>
-				))}
-			</ul>
-		</div>
+								<div class="repos-meta">
+									{repository.language && (
+										<span class="repos-lang">
+											<span class="repos-dot" style={`background:${languageColor(repository.language)}`} />
+											{repository.language}
+										</span>
+									)}
+									{repository.stargazers_count > 0 && (
+										<span class="repos-stars">★ {repository.stargazers_count}</span>
+									)}
+								</div>
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		</main>
 	</body>
 </html>
