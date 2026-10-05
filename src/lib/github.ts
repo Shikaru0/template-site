@@ -53,3 +53,16 @@ export async function getGitHubRepositories(): Promise<GitHubRepository[]> {
             );
         });
 }
+
+export async function getGithubReadme(repository: GitHubRepository): Promise<string | null> {
+    
+	const response = await fetch(
+		`https://raw.githubusercontent.com/${repository.full_name}/main/README.md`,
+	);
+
+	if (!response.ok) {
+		return null;
+	}
+
+	return response.text();
+}
