@@ -1,5 +1,7 @@
 ---
+import { getGitHubRepositories } from "../lib/github";
 
+const repositories = await getGitHubRepositories();
 ---
 
 <html lang="en">
@@ -13,5 +15,19 @@
 	</head>
 	<body>
 		<h1>Astro</h1>
+		<div>
+			<h2>GitHub Repositories</h2>
+
+			<ul>
+				{repositories.map((repository) => (
+					<li>
+						<a href={repository.html_url} target="_blank" rel="noopener noreferrer">
+							{repository.name}
+							{repository.description && ` - ${repository.description}`}
+						</a>
+					</li>
+				))}
+			</ul>
+		</div>
 	</body>
 </html>
