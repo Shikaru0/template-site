@@ -162,6 +162,7 @@ h2 {
 	font-size: 0.9rem;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
+	line-clamp: 2;
 }
 
 .repos-meta {
