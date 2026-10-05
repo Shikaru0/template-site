@@ -1,0 +1,17 @@
+:root {
+	--bg: #0d1117;
+	--text: #e6edf3;
+	--accent: #731fe0;
+}
+
+body {
+	margin: 0;
+	padding: 2rem;
+	background: var(--bg);
+	color: var(--text);
+	font-family: system-ui, sans-serif;
+}
+
+a {
+	color: var(--accent);
+}

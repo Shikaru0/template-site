@@ -2,6 +2,7 @@
 import { marked } from "marked";
 import { site } from "../config";
 import { getGitHubRepositories, getGithubReadme } from "../lib/github";
+import "../styles/global.css";
 
 const repositories = await getGitHubRepositories();
 
