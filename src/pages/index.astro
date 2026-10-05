@@ -1,6 +1,6 @@
 ---
 import { marked } from "marked";
-import { site } from "../config";
+import { site, socials } from "../config";
 import { getGitHubRepositories, getGithubReadme } from "../lib/github";
 import "../styles/global.css";
 
@@ -88,6 +88,22 @@ const parsedReadme = readme ? marked.parse(readme) : null;
 						</li>
 					))}
 				</ul>
+
+				{socials.length > 0 && (
+					<>
+						<h2>Socials</h2>
+
+						<ul class="socials">
+							{socials.map((social) => (
+								<li>
+									<a href={social.url} target="_blank" rel="noopener noreferrer">
+										<span class="socials-name">{social.name}</span>
+									</a>
+								</li>
+							))}
+						</ul>
+					</>
+				)}
 			</div>
 		</main>
 	</body>

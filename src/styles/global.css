@@ -92,7 +92,8 @@ h2 {
 	margin-bottom: 0.35rem;
 }
 
-.repos {
+.repos,
+.socials {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 	gap: 1rem;
@@ -101,7 +102,8 @@ h2 {
 	list-style: none;
 }
 
-.repos > li {
+.repos > li,
+.socials > li {
 	display: flex;
 	flex-direction: column;
 	min-height: 170px;
@@ -114,19 +116,30 @@ h2 {
 		transform 180ms ease;
 }
 
-.repos > li:hover {
+.socials > li {
+	min-height: 0;
+}
+
+.repos > li:hover,
+.socials > li:hover {
 	border-color: color-mix(in srgb, var(--accent) 45%, var(--border));
 	background: color-mix(in srgb, var(--bg-secondary) 92%, var(--accent));
 	transform: translateY(-3px);
 }
 
-.repos > li > a {
+.repos > li > a,
+.socials > li > a {
 	display: flex;
 	flex: 1;
 	flex-direction: column;
 	padding: 1.25rem;
 	color: inherit;
 	text-decoration: none;
+}
+
+.socials-name {
+	font-weight: 600;
+	letter-spacing: -0.02em;
 }
 
 .repos-head {
@@ -149,7 +162,8 @@ h2 {
 		transform 180ms ease;
 }
 
-.repos > li:hover .repos-arrow {
+.repos > li:hover .repos-arrow,
+.socials > li:hover .repos-arrow {
 	color: var(--accent);
 	transform: translate(2px, -2px);
 }
