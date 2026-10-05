@@ -5,7 +5,8 @@ import { getGitHubRepositories, getGithubReadme } from "../lib/github";
 
 const repositories = await getGitHubRepositories();
 
-const readme = await getGithubReadme(repositories.find((repository) => repository.name === site.username)!);
+const profileRepository = repositories.find((repository) => repository.name === site.username);
+const readme = profileRepository ? await getGithubReadme(profileRepository) : null;
 const parsedReadme = readme ? marked.parse(readme) : null;
 ---
 
