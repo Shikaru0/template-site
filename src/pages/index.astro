@@ -1,10 +1,12 @@
 ---
+import { marked } from "marked";
 import { site } from "../config";
 import { getGitHubRepositories, getGithubReadme } from "../lib/github";
 
 const repositories = await getGitHubRepositories();
 
 const readme = await getGithubReadme(repositories.find((repository) => repository.name === site.username)!);
+const parsedReadme = readme ? marked.parse(readme) : null;
 ---
 
 <html lang="en">
@@ -20,8 +22,8 @@ const readme = await getGithubReadme(repositories.find((repository) => repositor
 		<h1>{site.username}</h1>
 		<div>
 			<h2>About Me</h2>
-			{readme ? (
-				<div set:html={readme} />
+			{parsedReadme ? (
+				<div set:html={parsedReadme} />
 			) : (
 				<p>No README found for the user.</p>
 			)}
