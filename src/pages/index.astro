@@ -4,6 +4,33 @@ import { site } from "../config";
 import { getGitHubRepositories, getGithubReadme } from "../lib/github";
 import "../styles/global.css";
 
+const languageColors: Record<string, string> = {
+	Astro: "#ff5d01",
+	"C#": "#178600",
+	"C++": "#f34b7d",
+	CSS: "#563d7c",
+	Dart: "#00b4ab",
+	Go: "#00add8",
+	HTML: "#e34c26",
+	Java: "#b07219",
+	JavaScript: "#f1e05a",
+	Kotlin: "#a97bff",
+	Lua: "#000080",
+	PHP: "#4f5d95",
+	Python: "#3572a5",
+	Ruby: "#701516",
+	Rust: "#dea584",
+	Shell: "#89e051",
+	Swift: "#f05138",
+	Svelte: "#ff3e00",
+	TypeScript: "#3178c6",
+	Vue: "#41b883",
+};
+
+function languageColor(language: string | null): string {
+	return (language && languageColors[language]) || "#8b949e";
+}
+
 const repositories = await getGitHubRepositories();
 
 const profileRepository = repositories.find((repository) => repository.name === site.username);
@@ -18,26 +45,39 @@ const parsedReadme = readme ? marked.parse(readme) : null;
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<meta name="description" content={`${site.username}`} />
+		<title>{site.username}</title>
 	</head>
 	<body>
 		<h1>{site.username}</h1>
 		<div>
-			<h2>About Me</h2>
 			{parsedReadme ? (
-				<div set:html={parsedReadme} />
+				<div class="prose" set:html={parsedReadme} />
 			) : (
 				<p>No README found for the user.</p>
 			)}
 
 			<h2>GitHub Repositories</h2>
 
-			<ul>
+			<ul class="repos">
 				{repositories.map((repository) => (
 					<li>
 						<a href={repository.html_url} target="_blank" rel="noopener noreferrer">
-							{repository.name}
-							{repository.description && ` - ${repository.description}`}
+							<div class="repos-head">
+								<span class="repos-name">{repository.name}</span>
+								{repository.stargazers_count > 0 && (
+									<span class="repos-stars">★ {repository.stargazers_count}</span>
+								)}
+							</div>
+							{repository.description && (
+								<p class="repos-desc">{repository.description}</p>
+							)}
+							{repository.language && (
+								<span class="repos-lang">
+									<span class="repos-dot" style={`background:${languageColor(repository.language)}`} />
+									{repository.language}
+								</span>
+							)}
 						</a>
 					</li>
 				))}
