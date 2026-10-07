@@ -32,6 +32,14 @@ All commands are run from the root of the project, from a terminal:
 GitHub Pages is a static website hosting service provided by GitHub.
 The project contains an `astro.yml` workflow file, which builds and deploys the site to GitHub Pages.
 
+Every push, it will automatically rebuild and redeploy, but a scheduled rebuild is also possible.
+This template-site has a default hourly rebuild:
+
+```
+  schedule:
+    - cron: "0 * * * *"
+```
+
 > Please note that when deploying sites on GitHub Pages, it must follow their 
 [ToS](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service)
 
