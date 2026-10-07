@@ -34,6 +34,7 @@ The project contains an `astro.yml` workflow file, which builds and deploys the 
 > The site will only deploy if it is a public repository unless you have a Github Enterprise account
 
 Every push, it will automatically rebuild and redeploy, but a scheduled rebuild is also possible.
+With the current Github Pages Usage Limit, there is a _soft_ limit of 10 builds per hour.
 This template-site has a default hourly rebuild:
 
 ```
