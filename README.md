@@ -3,6 +3,12 @@ Personal GitHub Pages site template built with Astro + TypeScript. Your reposito
 
 Making it yours: clone the repo, edit `src/config.ts`, push. That's the whole setup.
 
+## Why this?
+- Automatically displays your github repositories and profile README.
+- Keeps your site content synced with your github profile at build time.
+- Requires minimal configuration and no backend or database.
+- Deploys easily to github pages.
+
 ## Configuring
 In `src/config.ts` you can configure everything needed to make it tailored to you.
 You can:
