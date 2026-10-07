@@ -171,11 +171,9 @@ h2 {
 	font-size: 0.78rem;
 }
 
-.repos-dot {
-	width: 0.5rem;
-	height: 0.5rem;
-	margin-right: 0.4rem;
-	border-radius: 999px;
+/* stars pinned bottom-right, with or without a language */
+.repos-stars {
+	margin-left: auto;
 }
 
 @media (prefers-reduced-motion: reduce) {
