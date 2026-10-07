@@ -28,3 +28,13 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
+## Github Pages
+GitHub Pages is a static website hosting service provided by GitHub.
+The project contains an `astro.yml` workflow file, which builds and deploys the site to GitHub Pages.
+
+> Please note that when deploying sites on GitHub Pages, it must follow their 
+[ToS](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service)
+
+### Usage Limit
+GitHub Pages sites are to the usage limits stated in their 
+[docs](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits#usage-limits). 
